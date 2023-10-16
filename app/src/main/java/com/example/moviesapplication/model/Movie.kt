@@ -2,14 +2,8 @@ package com.example.moviesapplication.model
 
 import java.io.Serializable
 
-data class Movie(
-    val page: Long,
-    val results: List<Result>,
-    val total_pages: Long,
-    val total_results: Long
-) : Serializable
 
-data class Result(
+data class Movie(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Long>,
