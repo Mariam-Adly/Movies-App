@@ -28,26 +28,40 @@ class MoviesViewModel (private val _repo : RepoInterface): ViewModel() {
             }
     }
 
-   /* fun addMovie(athlete: List<Movie>?){
+    fun getSearchMovies(txtSearch : String) = viewModelScope.launch {
+        _movie.value = ApiState.Loading
+        _repo.searchMovies(txtSearch)
+            .catch {
+                e -> _movie.value = ApiState.Failure(e)
+            }
+            .collect{
+                data ->
+                _movie.value = ApiState.Success(data)
+            }
+    }
+
+
+    fun addMovie(movie: Movie?){
         viewModelScope.launch(Dispatchers.IO) {
-            if (athlete != null) {
-                _repo.insertAthlete(athlete)
+            if (movie != null) {
+                _repo.insertMovie(movie)
+                println("item added")
             }
         }
 
-    }*/
+    }
 
-   /* fun getStoreAthletes() =
+    fun getStoreMovies() =
         viewModelScope.launch{
-            _athlete.value = ApiState.Loading
-            _repo.getStoredAthletes()
+            _movie.value = ApiState.Loading
+            _repo.getStoredMovies()
                 .catch {
-                        e-> _athlete.value = ApiState.Failure(e)
+                        e-> _movie.value = ApiState.Failure(e)
                 }
                 .collect{
                         data ->
-                    _athlete.value = ApiState.SuccessDB(data)
+                    _movie.value = ApiState.SuccessDB(data)
                 }
-        }*/
+        }
 
 }
