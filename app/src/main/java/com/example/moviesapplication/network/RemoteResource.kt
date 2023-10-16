@@ -8,4 +8,6 @@ interface RemoteResource {
 
     suspend fun getMoviesOverNetwork(): Response<ResultData>
 
+    suspend fun getSearchMoviesOverNetwork(txtSearch : String) : Response<ResultData>
+
 }

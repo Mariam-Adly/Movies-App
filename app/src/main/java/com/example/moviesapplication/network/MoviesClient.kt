@@ -25,4 +25,8 @@ class MoviesClient private constructor():RemoteResource {
     override suspend fun getMoviesOverNetwork(): Response<ResultData> {
         return apiService.allMovies()
     }
+
+    override suspend fun getSearchMoviesOverNetwork(txtSearch : String): Response<ResultData> {
+        return apiService.searchMovies(txtSearch)
+    }
 }

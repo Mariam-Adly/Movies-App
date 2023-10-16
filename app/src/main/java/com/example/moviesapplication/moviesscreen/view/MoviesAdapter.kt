@@ -17,7 +17,7 @@ import com.example.moviesapplication.model.Movie
 
 class MoviesAdapter (private val onClick:(Movie)->Unit): ListAdapter<Movie, MoviesAdapter.ViewHolder>(MyDifUnit()) {
     lateinit var contxt: Context
-
+     var isFav : Boolean = true
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         contxt=parent.context
@@ -48,6 +48,7 @@ class MoviesAdapter (private val onClick:(Movie)->Unit): ListAdapter<Movie, Movi
             get() = itemView.findViewById(R.id.img_movies)
         val constraint : ConstraintLayout
             get() = itemView.findViewById(R.id.constraint)
+
     }
 }
 

@@ -9,9 +9,6 @@ object RetrofitHelper {
 
     val baseUrl = "https://api.themoviedb.org/3/"
 
-   /* val client = OkHttpClient.Builder().apply {
-        addInterceptor(MyInterceptor())
-    }.build()*/
 
     fun getInstance(): Retrofit {
         return Retrofit.Builder().baseUrl(baseUrl)
