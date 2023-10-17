@@ -6,7 +6,7 @@ import retrofit2.Response
 
 sealed class ApiState{
         class Success(val data: Response<ResultData>):ApiState()
-        class SuccessDB(val data : List<Movie>) : ApiState()
+        class SuccessDB(val data: List<Movie>) : ApiState()
         class Failure(val msg: Throwable): ApiState()
         object Loading : ApiState()
         object Empty :  ApiState()

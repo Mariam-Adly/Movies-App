@@ -11,4 +11,6 @@ interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertMovie(movie: Movie)
+    @Delete
+    suspend fun deleteMovie(movie: Movie)
 }

@@ -13,10 +13,16 @@ class LocalSourceImpl(context: Context) : LocalSource {
 
     override suspend fun insertMovie(movie: Movie) {
         moviesDao.insertMovie(movie)
+        movie.isFav = true
     }
 
     override suspend fun getStoredMovies(): Flow<List<Movie>> {
         return moviesDao.getAll()
+    }
+
+    override suspend fun deleteMovie(movie: Movie) {
+        moviesDao.deleteMovie(movie)
+        movie.isFav = false
     }
 
 

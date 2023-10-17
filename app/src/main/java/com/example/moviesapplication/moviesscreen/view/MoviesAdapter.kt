@@ -15,7 +15,7 @@ import com.example.moviesapplication.R
 import com.example.moviesapplication.model.Movie
 
 
-class MoviesAdapter (private val onClick:(Movie)->Unit): ListAdapter<Movie, MoviesAdapter.ViewHolder>(MyDifUnit()) {
+class MoviesAdapter (private val onClick:(Movie)->Unit,private val clickFav:(Movie)->Unit): ListAdapter<Movie, MoviesAdapter.ViewHolder>(MyDifUnit()) {
     lateinit var contxt: Context
      var isFav : Boolean = true
 
@@ -36,6 +36,16 @@ class MoviesAdapter (private val onClick:(Movie)->Unit): ListAdapter<Movie, Movi
         holder.constraint.setOnClickListener {
             onClick(getItem(position))
         }
+        holder.img_fav.setOnClickListener {
+            clickFav(getItem(position))
+            getItem(position).isFav = true
+            holder.img_fav.setImageResource(R.drawable.baseline_favorite_24)
+        }
+        if(getItem(position).isFav){
+            holder.img_fav.setImageResource(R.drawable.baseline_favorite_24)
+        }else{
+            holder.img_fav.setImageResource(R.drawable.baseline_favorite_border_24)
+        }
     }
 
 
@@ -48,6 +58,8 @@ class MoviesAdapter (private val onClick:(Movie)->Unit): ListAdapter<Movie, Movi
             get() = itemView.findViewById(R.id.img_movies)
         val constraint : ConstraintLayout
             get() = itemView.findViewById(R.id.constraint)
+        val img_fav : ImageView
+        get() = itemView.findViewById(R.id.img_fav)
 
     }
 }
