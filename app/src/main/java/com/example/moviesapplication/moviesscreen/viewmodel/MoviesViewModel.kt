@@ -64,4 +64,14 @@ class MoviesViewModel (private val _repo : RepoInterface): ViewModel() {
                 }
         }
 
+    fun deleteMovie(movie: Movie?){
+        viewModelScope.launch(Dispatchers.IO) {
+            if (movie != null) {
+                _repo.deleteMovie(movie)
+                println("item delete")
+            }
+        }
+    }
+
+
 }

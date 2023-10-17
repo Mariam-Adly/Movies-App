@@ -8,5 +8,6 @@ interface LocalSource {
 
     suspend fun insertMovie(movie: Movie)
     suspend fun getStoredMovies(): Flow<List<Movie>>
+    suspend fun deleteMovie(movie: Movie)
 
 }

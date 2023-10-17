@@ -40,5 +40,9 @@ class Repository private constructor(var remoteResource: RemoteResource , var lo
         return localSource.getStoredMovies()
     }
 
+    override suspend fun deleteMovie(movie: Movie) {
+        localSource.deleteMovie(movie)
+    }
+
 
 }
